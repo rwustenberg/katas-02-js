@@ -40,8 +40,12 @@ let numFunction = (num,x) => {
 
 //020205
 	let randomNum = (x) => {
-		return Math.random()
+		return Math.round(Math.random() * 10)
 	}
-		console.log(randomNum() * 10)
+		console.log(randomNum())
 
 //020206
+let randNum = (num) => {
+	return Math.round(Math.random() * num)
+	}
+	console.log(randNum(9))
