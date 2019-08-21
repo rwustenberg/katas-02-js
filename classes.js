@@ -63,3 +63,43 @@ let fight = (kP) => {
 	}, 1000)
 }
 fight(kPerson)
+
+//020504
+let names = ['apples', 'bananas', 'bread', 'cookies', 'broccoli', 'onions']
+let prices = [20, 12, 24, 53, 32, 15]
+let discounts = [0, 0, 10, 25, 0, 5]
+
+class Product {
+	constructor(name, price) {
+		this.name = name
+		this.price = price
+	}
+	applyDiscount(discount) {
+		this.price = ((100 - discount) / 100) * this.price
+	}
+}
+
+class Receipt {
+	constructor(products) {
+		this.products = products
+	}
+	calcTotal() {
+		return this.products.reduce((acc, product) => acc + product.price, 0)
+	}
+}
+
+let getReceipt = (names, prices, discounts) => {
+	let products = names.map((name, ind) => {
+		return new Product(name, prices[ind])
+	})
+	console.log(products)
+	products.forEach((product, ind) => {
+		product.applyDiscount(discounts[ind])
+	})
+	console.log(products)
+	let receipt = new Receipt(products)
+	let total = receipt.calcTotal()
+	console.log(total)
+}
+
+getReceipt(names, prices, discounts)
